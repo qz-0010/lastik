@@ -1,0 +1,37 @@
+<form *ngIf="mode === 'add'" (ngSubmit)="onAddSubmit()" #fAdd="ngForm">
+  <h4 class="mb-4">Добавить мероприятие</h4>
+  <div class="form-group" *ngFor="let inp of inputs">
+    <input
+      type="{{inp.type}}"
+      name="{{inp.name}}"
+      placeholder="{{inp.placeholder}}"
+      class="form-control"
+      value="{{inp.value}}"
+      ngModel
+      required
+    >
+  </div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="!fAdd.valid">Создать</button>
+</form>
+
+<form *ngIf="mode === 'edit'" (ngSubmit)="onEditSubmit(event.uuid)" #fEdit="ngForm">
+  <div class="form-group" *ngFor="let inp of inputs">
+    <input
+      type="{{inp.type}}"
+      name="{{inp.name}}"
+      placeholder="{{inp.placeholder}}"
+      class="form-control"
+      [ngModel]="event[inp.name]"
+      autofocus
+      required
+    >
+  </div>
+  <button
+    class="btn btn-primary mr-3"
+    type="submit"
+    [disabled]="!fEdit.valid">Сохранить</button>
+  <button class="btn btn-primary" (click)="onCloseEdit(event)">Отмена</button>
+</form>

@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <app-event-form
+      *ngIf="mode.edit && mode.edit.id === event.uuid; else info"
+      [mode]="'edit'" [event]="event"
+      (editFormSubmit)="onEditFormSubmit($event)"
+      (closeEdit)="onEditFormClose($event)"></app-event-form>
+    <ng-template #info>
+      <h5 class="card-title">{{ event.title }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ event.summary }}</h6>
+      <p class="card-subtitle mb-2 text-muted">{{ event.duration }}</p>
+      <p class="card-text">{{ event.description }}.</p>
+      <button class="btn" (click)="onEdit(event)">Редактировать</button>
+    </ng-template>
+  </div>
+</div>

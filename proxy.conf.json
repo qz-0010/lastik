@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://test.xd.unitix.cloud",
+    "secure": "false",
+    "changeOrigin": "true"
+  }
+}

@@ -1,0 +1,15 @@
+<section class="mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-6 col-lg-4">
+      <app-event-form (addFormSubmit)="onAddSubmit($event)"></app-event-form>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <app-event-item
+        *ngFor="let event of events"
+        [event]="event" [mode]="mode"
+        (eventEdit)="onEditEvent(event)"
+        (editFormSubmit)="onEditSubmit($event)"
+        (editFormClose)="onEditClose($event)"></app-event-item>
+    </div>
+  </div>
+</section>
